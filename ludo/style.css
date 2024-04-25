@@ -20,6 +20,8 @@
     height: 3%;
     border: 2px solid ;
     border-radius: 50px;
+    position: absolute;
+    
 }
 
 [player-id="P1"].player-piece{
