@@ -114,3 +114,8 @@ export const TURNING_POINTS={
 }
 
 export const SAFE_POSITIONS=[0,8,13,21,26,34,39,47];
+
+export const STATE={
+    DICE_NOT_ROLLED: 'DICE_NOT_ROLLED',
+    DICE_ROLLED: 'DICE_ROLLED',
+}
