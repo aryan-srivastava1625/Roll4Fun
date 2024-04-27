@@ -48,8 +48,15 @@ export class UI {
 
         // Display player ID
         document.querySelector('.active-player span').innerText = player;
+
+        document.querySelector(`[player-id="${player}"].player-base`).classList.add('highlight')
+
+
+
+
     }
 
 }
 UI.setPiecePosition('P1',0,0);
 UI.setTurn(0);
+UI.setTurn(1);
