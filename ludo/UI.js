@@ -49,6 +49,10 @@ export class UI {
         // Display player ID
         document.querySelector('.active-player span').innerText = player;
 
+        const activePlayerBase=document.querySelector('.player-base.highlight');
+        if(activePlayerBase){
+        activePlayerBase.classList.remove('highlight');
+        }
         document.querySelector(`[player-id="${player}"].player-base`).classList.add('highlight')
 
 
