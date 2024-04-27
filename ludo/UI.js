@@ -30,11 +30,26 @@ export class UI {
             console.error(`Player element of given player: ${player} and piece: ${piece} not found`)
             return;
         }
+
         const [x, y] = COORDINATES_MAP[newPosition];
 
         const pieceElement = playerPiecesElements[player][piece];
         pieceElement.style.top = y * STEP_LENGTH + '%';
         pieceElement.style.left = x * STEP_LENGTH + '%';
     }
+
+    static setTurn(index) {
+        if(index < 0 || index >= PLAYERS.length) {
+            console.error('index out of bound!');
+            return;
+        }
+        
+        const player = PLAYERS[index];
+
+        // Display player ID
+        document.querySelector('.active-player span').innerText = player;
+    }
+
 }
 UI.setPiecePosition('P1',0,0);
+UI.setTurn(0);
