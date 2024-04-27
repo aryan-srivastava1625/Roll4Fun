@@ -37,3 +37,4 @@ export class UI {
         pieceElement.style.left = x * STEP_LENGTH + '%';
     }
 }
+UI.setPiecePosition('P1',0,0);
