@@ -90,6 +90,10 @@
 
 }
 
+.btn:disabled{
+    opacity: 0.5;
+}
+
 .btn-dice{
     background-color: #AF8260;
     color: beige;
