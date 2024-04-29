@@ -54,11 +54,15 @@ export class UI {
         activePlayerBase.classList.remove('highlight');
         }
         document.querySelector(`[player-id="${player}"].player-base`).classList.add('highlight')
-
-
-
-
     }
+
+    static enableDice(){
+        diceButtonElement.removeAttribute('disabled');
+    }
+
+    static disableDice(){
+        diceButtonElement.setAttribute('disabled', '');
+    }   
 
 }
 UI.setPiecePosition('P1',0,0);
