@@ -43,9 +43,46 @@ export class Ludo {
     constructor() {
         console.log('Hello World! Lets play Ludo!');
 
-        this.diceValue = 4;
-        this.turn = 0;
-        this.state = STATE.DICE_ROLLED;
+        // this.diceValue = 4;
+        // this.turn = 0;
+        // this.state = STATE.DICE_ROLLED;
+        this.listenDiceClick();
+        this.listenResetClick();
+        this.listenPieceClick();
     }
+
+    listenDiceClick() {
+        UI.listenDiceClick(this.onDiceClick.bind(this))
+    }
+
+    onDiceClick() {
+        console.log('dice clicked!');
+        // this.diceValue = 1 + Math.floor(Math.random() * 6);
+        // this.state = STATE.DICE_ROLLED;
+        
+        // this.checkForEligiblePieces();
+    }
+
+    listenResetClick(){
+        UI.listenResetClick(this.resetGame.bind(this))
+    }
+
+    resetGame(){
+        console.log('reset game')
+    }
+
+    listenPieceClick(){
+        UI.listenPieceClick(this.onPieceClick.bind(this));
+    }
+
+    onPieceClick(event){
+        const target = event.target;
+        if(!target.classList.contains('player-piece')){
+            return;
+        }
+        console.log('piece clicked')
+    }
+
+
 }
 
