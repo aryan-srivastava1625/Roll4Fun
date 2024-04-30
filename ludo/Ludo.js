@@ -1,5 +1,5 @@
 import { UI } from './UI.js'
-import { STATE } from './constants.js';
+import { BASE_POSITIONS, PLAYERS, STATE } from './constants.js';
 export class Ludo {
     currentPositions = {
         P1: [],
@@ -49,6 +49,7 @@ export class Ludo {
         this.listenDiceClick();
         this.listenResetClick();
         this.listenPieceClick();
+        this.setPiecePosition('P1',0,0);
     }
 
     listenDiceClick() {
@@ -68,7 +69,14 @@ export class Ludo {
     }
 
     resetGame(){
-        console.log('reset game')
+        console.log('reset game');
+        this.currentPositions=BASE_POSITIONS;
+
+        PLAYERS.forEach(player=>{
+            [0,1,2,3].forEach(piece=>{
+                this.setPiecePosition(player,piece,this.currentPositions[player][piece])
+            })
+        })
     }
 
     listenPieceClick(){
@@ -81,8 +89,20 @@ export class Ludo {
             return;
         }
         console.log('piece clicked')
+
+        const player=target.getAttribute('player-id');
+        const piece= target.getAttribute('piece');
+        this.handlePieceClick(player,piece);
+
+    }
+    handlePieceClick(player,piece){
+        console.log(player,piece)
     }
 
+    setPiecePosition(player,piece,newPosition){
+        this.currentPositions[player][piece]=newPosition;
+        UI.setPiecePosition(player,piece,newPosition)
+    }
 
 }
 
