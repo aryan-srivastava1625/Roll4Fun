@@ -49,27 +49,27 @@ export class UI {
         // Display player ID
         document.querySelector('.active-player span').innerText = player;
 
-        const activePlayerBase=document.querySelector('.player-base.highlight');
-        if(activePlayerBase){
-        activePlayerBase.classList.remove('highlight');
+        const activePlayerBase = document.querySelector('.player-base.highlight');
+        if(activePlayerBase) {
+            activePlayerBase.classList.remove('highlight');
         }
+        // highlight
         document.querySelector(`[player-id="${player}"].player-base`).classList.add('highlight')
     }
 
-    static enableDice(){
+    static enableDice() {
         diceButtonElement.removeAttribute('disabled');
     }
 
-    static disableDice(){
+    static disableDice() {
         diceButtonElement.setAttribute('disabled', '');
-    }  
-    
+    }
+
     /**
      * 
      * @param {string} player 
      * @param {Number[]} pieces 
      */
-
     static highlightPieces(player, pieces) {
         pieces.forEach(piece => {
             const pieceElement = playerPiecesElements[player][piece];
@@ -77,22 +77,23 @@ export class UI {
         })
     }
 
-    static unhighlightPieces(){
-        document.querySelectorAll('.player-piece.highlight').forEach(ele =>{
+    static unhighlightPieces() {
+        document.querySelectorAll('.player-piece.highlight').forEach(ele => {
             ele.classList.remove('highlight');
         })
     }
 
-    static setDiceValue(value){
-        document.querySelector('.dice-value').innerText=value;
+    static setDiceValue(value) {
+        document.querySelector('.dice-value').innerText = value;
     }
-
 }
-// UI.setPiecePosition('P1',0,0);
+
+// UI.setPiecePosition('P1', 0, 0);
 // UI.setTurn(0);
 // UI.setTurn(1);
+
 // UI.disableDice();
 // UI.enableDice();
-// UI.highlightPieces('P1',[0])
+// UI.highlightPieces('P1', [0]);
 // UI.unhighlightPieces();
 // UI.setDiceValue(5);
