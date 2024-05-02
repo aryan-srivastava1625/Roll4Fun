@@ -117,14 +117,23 @@ export class Ludo {
     }
 
     incrementPiecePosition(player,piece){
+    
+        this.setPiecePosition(player,piece,this.getIncrementedPosition(player,piece));
+
+    }
+
+    getIncrementedPosition(player,piece){
+        
         const currentPosition=this.currentPositions[player][piece];
-        let incrementedPosition;
 
         if(currentPosition===TURNING_POINTS[player]){
-            incrementedPosition HOME_ENTRANCE[player][0];
+            return HOME_ENTRANCE[player][0];
         }
-        
-        this.setPiecePosition(player,piece,)
+
+        else if(currentPosition === 51){
+            return 0;
+        }
+            return currentPosition + 1;
 
     }
 
