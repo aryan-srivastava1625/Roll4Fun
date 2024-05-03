@@ -1,5 +1,5 @@
 import { UI } from './UI.js'
-import { BASE_POSITIONS, HOME_ENTRANCE, PLAYERS, STATE, TURNING_POINTS } from './constants.js';
+import { BASE_POSITIONS, HOME_ENTRANCE, HOME_POSITIONS, PLAYERS, STATE, TURNING_POINTS } from './constants.js';
 export class Ludo {
     currentPositions = {
         P1: [],
@@ -49,7 +49,10 @@ export class Ludo {
         this.listenDiceClick();
         this.listenResetClick();
         this.listenPieceClick();
-        this.setPiecePosition('P1',0,0);
+        this.resetGame();
+        this.setPiecePosition('P1',0,HOME_POSITIONS.P1);
+        this.diceValue=6;
+        console.log(this.getEligiblePieces('P1'))
     }
 
     listenDiceClick() {
@@ -83,7 +86,25 @@ export class Ludo {
 
     getEligiblePieces(player){
         return [0,1,2,3].filter(piece =>{
-            const currentPosition =
+            const currentPosition = this.currentPositions[player][piece];
+
+            if(currentPosition===HOME_POSITIONS[player]){
+                return false;
+            }
+
+            if(
+                BASE_POSITIONS[player].includes(currentPosition)
+                && this.diceValue !==6
+             ){
+                return false;
+             }
+
+            if(HOME_ENTRANCE[player].includes(currentPosition)&& this._diceValue > HOME_POSITIONS[player] - currentPosition){
+                return false;
+
+            }
+
+            return true;
         })
     }
 
