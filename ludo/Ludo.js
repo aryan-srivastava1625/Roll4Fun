@@ -50,7 +50,7 @@ export class Ludo {
         this.listenResetClick();
         this.listenPieceClick();
         this.resetGame();
-        this.setPiecePosition('P1',0,HOME_POSITIONS.P1);
+        this.setPiecePosition('P1',0,HOME_ENTRANCE.P1[0]);
         this.diceValue=6;
         console.log(this.getEligiblePieces('P1'))
     }
