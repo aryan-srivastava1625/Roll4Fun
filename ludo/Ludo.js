@@ -149,6 +149,7 @@ export class Ludo {
         if(BASE_POSITIONS[player].includes(currentPosition)){
             this.setPiecePosition(player,piece,START_POSITIONS[player]);
             this.state=STATE.DICE_NOT_ROLLED;
+            return;
         }
         this.movePiece(player,piece,5)
     }
