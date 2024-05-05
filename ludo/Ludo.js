@@ -61,8 +61,8 @@ export class Ludo {
 
     onDiceClick() {
         console.log('dice clicked!');
-        // this.diceValue = 1 + Math.floor(Math.random() * 7);
-        this.diceValue = 6
+        this.diceValue = 1 + Math.floor(Math.random() * 7);
+        
         this.state = STATE.DICE_ROLLED;
         
         this.checkForEligiblePieces();
@@ -82,7 +82,7 @@ export class Ludo {
 
     incrementTurn(){
         this.turn=this.turn===0 ? 1:0;
-        this.state.DICE_NOT_ROLLED;
+        this.state=STATE.DICE_NOT_ROLLED;
     }
 
     getEligiblePieces(player){
@@ -151,6 +151,7 @@ export class Ludo {
             this.state=STATE.DICE_NOT_ROLLED;
             return;
         }
+        UI.unhighlightPieces();
         this.movePiece(player,piece,5)
     }
 
