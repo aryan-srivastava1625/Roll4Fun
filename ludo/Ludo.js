@@ -1,5 +1,5 @@
 import { UI } from './UI.js'
-import { BASE_POSITIONS, HOME_ENTRANCE, HOME_POSITIONS, PLAYERS, STATE, TURNING_POINTS } from './constants.js';
+import { BASE_POSITIONS, HOME_ENTRANCE, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, TURNING_POINTS } from './constants.js';
 export class Ludo {
     currentPositions = {
         P1: [],
@@ -145,6 +145,11 @@ export class Ludo {
     }
     handlePieceClick(player,piece){
         console.log(player,piece);
+        const currentPosition=this.currentPositions[player][piece];
+        if(BASE_POSITIONS[player].includes(currentPosition)){
+            this.setPiecePosition(player,piece,START_POSITIONS[player]);
+            this.state=STATE.DICE_NOT_ROLLED;
+        }
         this.movePiece(player,piece,5)
     }
 
