@@ -50,9 +50,9 @@ export class Ludo {
         this.listenResetClick();
         this.listenPieceClick();
         this.resetGame();
-        this.setPiecePosition('P1',0,HOME_ENTRANCE.P1[0]);
-        this.diceValue=6;
-        console.log(this.getEligiblePieces('P1'))
+        // this.setPiecePosition('P1',0,HOME_ENTRANCE.P1[0]);
+        // this.diceValue=6;
+        // console.log(this.getEligiblePieces('P1'))
     }
 
     listenDiceClick() {
@@ -61,7 +61,8 @@ export class Ludo {
 
     onDiceClick() {
         console.log('dice clicked!');
-        this.diceValue = 1 + Math.floor(Math.random() * 7);
+        // this.diceValue = 1 + Math.floor(Math.random() * 7);
+        this.diceValue = 6
         this.state = STATE.DICE_ROLLED;
         
         this.checkForEligiblePieces();
@@ -72,7 +73,7 @@ export class Ludo {
         const player=PLAYERS[this.turn];
         const eligiblePieces=this.getEligiblePieces(player);
         if(eligiblePieces.length){
-
+            UI.highlightPieces(player,eligiblePieces);
         }else{
             this.incrementTurn();
         }
@@ -120,7 +121,10 @@ export class Ludo {
             [0,1,2,3].forEach(piece=>{
                 this.setPiecePosition(player,piece,this.currentPositions[player][piece])
             })
-        })
+        });
+
+        this._turn=0;
+        this.state=DICE_NOT_ROLLED;
     }
 
     listenPieceClick(){
