@@ -50,7 +50,10 @@ export class Ludo {
         this.listenResetClick();
         this.listenPieceClick();
         this.resetGame();
-        // this.setPiecePosition('P1',0,HOME_ENTRANCE.P1[0]);
+        this.setPiecePosition('P1',0,HOME_ENTRANCE.P1[4]);
+        this.setPiecePosition('P1',1,HOME_POSITIONS.P1[0]);
+        this.setPiecePosition('P1',2,HOME_POSITIONS.P1[0]);
+        this.setPiecePosition('P1',3,HOME_POSITIONS.P1[0]);
         // this.diceValue=6;
         // console.log(this.getEligiblePieces('P1'))
     }
@@ -61,7 +64,7 @@ export class Ludo {
 
     onDiceClick() {
         console.log('dice clicked!');
-        this.diceValue = 1 + Math.floor(Math.random() * 7);
+        this.diceValue = 1 //+ Math.floor(Math.random() * 7);
         
         this.state = STATE.DICE_ROLLED;
         
@@ -152,7 +155,7 @@ export class Ludo {
             return;
         }
         UI.unhighlightPieces();
-        this.movePiece(player,piece,5)
+        this.movePiece(player,piece,this.diceValue)
     }
 
     setPiecePosition(player,piece,newPosition){
@@ -168,12 +171,22 @@ export class Ludo {
             moveBy--;
             if(moveBy===0){
                 clearInterval(interval);
+                if(this.hasPlayerWon(player)) {
+                    alert(`Player: ${player} has won!`);
+                    this.resetGame();
+                    return;
+                }
+
                 this.incrementTurn();
             }
 
         },200);
     
     
+    }
+
+    hasPlayerWon(player){
+        [0,1,2,3].every(piece=>this.currentPositions[player][piece]===HOME_POSITIONS[player])
     }
 
     incrementPiecePosition(player,piece){
