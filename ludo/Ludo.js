@@ -168,6 +168,7 @@ export class Ludo {
             moveBy--;
             if(moveBy===0){
                 clearInterval(interval);
+                this.incrementTurn();
             }
 
         },200);
