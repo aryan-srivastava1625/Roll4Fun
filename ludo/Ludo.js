@@ -124,7 +124,7 @@ export class Ludo {
         });
 
         this._turn=0;
-        this.state=DICE_NOT_ROLLED;
+        this.state=STATE.DICE_NOT_ROLLED;
     }
 
     listenPieceClick(){
